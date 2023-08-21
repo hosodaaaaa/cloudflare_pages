@@ -10,7 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.10.12"
+    "astro": "^2.10.12",
+    "newt-client-js": "^3.2.6"
   },
   "devDependencies": {
     "wrangler": "^3.5.1"
