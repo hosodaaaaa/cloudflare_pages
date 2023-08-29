@@ -1,0 +1,27 @@
+---
+import { client } from '../lib/newt';
+import type { Product } from '../lib/newt';
+
+export async function getStaticPaths() {
+  const { items: products } = await client.getContents<Product>({
+    appUid: 'products',
+    modelUid: 'category',
+  })
+  const pages = products.map((product) => {
+    return {
+      params : {
+        slug: product.categoryName
+      },
+      props: {
+        product
+      }
+    }
+  })
+  return pages
+}
+
+export const prerender = true
+const { product } = Astro.props
+---
+
+<h1>{product.categoryName}</h1>
