@@ -1,4 +1,5 @@
 import { createClient } from 'newt-client-js';
+import fetchAdapter from '@vespaiach/axios-fetch-adapter'
 
 export interface Product {
   categoryName: string
@@ -7,5 +8,6 @@ export interface Product {
 export const client = createClient({
   spaceUid: import.meta.env.SPACE_UID,
   token: import.meta.env.API_TOKEN,
-  apiType: 'api'
+  apiType: 'api',
+  adapter: fetchAdapter
 });

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^6.8.1",
+    "@vespaiach/axios-fetch-adapter": "^0.3.1",
     "astro": "^2.10.12",
     "newt-client-js": "^3.2.6"
   },
