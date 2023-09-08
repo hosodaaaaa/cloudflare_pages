@@ -2,6 +2,7 @@ import { createClient } from 'newt-client-js';
 import fetchAdapter from '@vespaiach/axios-fetch-adapter'
 
 export interface Product {
+  _id: string
   categoryName: string
 }
 

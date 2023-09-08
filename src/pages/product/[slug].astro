@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { client } from '../../lib/newt'
+import type { Product } from '../../lib/newt'
+
+const pathname = Astro.url.pathname.split('/')[2]
+const product = await client.getFirstContent<Product>({
+  appUid: 'products',
+  modelUid: 'category',
+  query: {
+    _id: pathname
+  }
+})
+---
+
+<Layout title=`このページは${product?.categoryName}です`>
+  <h1>{product?.categoryName}</h1>
+</Layout>
