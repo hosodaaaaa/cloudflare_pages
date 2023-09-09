@@ -19,7 +19,7 @@ const { items: products } = await client.getContents<Product>({
 				products.map((product) => {
 					return (
 						<li>
-							<a href={`/products/${product.categoryName}`}>
+							<a href={`/product/${product.categoryName}`}>
 								{product.categoryName}
 							</a>
 						</li>

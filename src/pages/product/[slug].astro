@@ -3,26 +3,16 @@ import Layout from '../../layouts/Layout.astro'
 import { client } from '../../lib/newt'
 import type { Product } from '../../lib/newt'
 
-export async function getStaticPaths() {
-  const { items: products } = await client.getContents<Product>({
-    appUid: 'products',
-    modelUid: 'category'
-  })
-  const pageName = products.map((product) => {
-    return {
-      params: {
-        slug: product.categoryName,
-      },
-      props: {
-        product,
-      },
-    }
-  })
-  return pageName
-}
-const {product} = Astro.props
+console.log(Astro.params.slug)
+const product = await client.getFirstContent<Product>({
+  appUid: 'products',
+  modelUid: 'category',
+  query: {
+    categoryName: Astro.params.slug
+  }
+})
 ---
 
-<Layout title=`このページは${product.categoryName}です`>
-  <h1>{product.categoryName}</h1>
+<Layout title={`${product?.categoryName}の詳細ページです` || ''}>
+  <h1>{product?.categoryName}</h1>
 </Layout>
